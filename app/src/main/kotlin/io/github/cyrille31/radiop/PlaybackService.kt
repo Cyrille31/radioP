@@ -102,6 +102,17 @@ class PlaybackService : MediaSessionService() {
         return result
     }
 
+    /**
+     * L'appli est balayée de la liste des applis récentes : on arrête tout pour de bon
+     * (son, notification, minuteur). Quitter par le bouton retour ou accueil laisse la radio jouer.
+     */
+    override fun onTaskRemoved(rootIntent: Intent?) {
+        handler.removeCallbacksAndMessages(null)
+        alarmMode = false
+        SleepTimer.clear()
+        pauseAllPlayersAndStopSelf()
+    }
+
     override fun onDestroy() {
         SleepTimer.onExpire = null
         handler.removeCallbacksAndMessages(null)
