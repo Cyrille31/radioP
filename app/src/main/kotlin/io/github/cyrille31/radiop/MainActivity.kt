@@ -116,6 +116,16 @@ class MainActivity : ComponentActivity() {
         controllerFuture = null
         super.onStop()
     }
+
+    /**
+     * L'écran est détruit pour de bon (appli balayée des applis récentes) : on arrête la radio.
+     * Second filet, au cas où le système ne préviendrait pas le service lui-même.
+     * Une rotation ou une mise en veille ne passent pas par là (isFinishing est faux).
+     */
+    override fun onDestroy() {
+        if (isFinishing) PlaybackService.instance?.shutdown()
+        super.onDestroy()
+    }
 }
 
 enum class Screen(val title: String) {

@@ -92,6 +92,7 @@ class PlaybackService : MediaSessionService() {
         )
         session = MediaSession.Builder(this, player).setSessionActivity(open).setCallback(callback).build()
         SleepTimer.onExpire = { player.pause() }
+        instance = this
     }
 
     override fun onGetSession(controllerInfo: MediaSession.ControllerInfo): MediaSession? = session
@@ -102,18 +103,29 @@ class PlaybackService : MediaSessionService() {
         return result
     }
 
-    /**
-     * L'appli est balayée de la liste des applis récentes : on arrête tout pour de bon
-     * (son, notification, minuteur). Quitter par le bouton retour ou accueil laisse la radio jouer.
-     */
+    /** L'appli est balayée de la liste des applis récentes : on arrête tout pour de bon. */
     override fun onTaskRemoved(rootIntent: Intent?) {
+        shutdown()
+    }
+
+    /**
+     * Arrêt complet : son, notification, minuteur, puis le service lui-même.
+     * Quitter par le bouton retour ou accueil ne passe pas par ici : la radio continue de jouer.
+     */
+    fun shutdown() {
         handler.removeCallbacksAndMessages(null)
         alarmMode = false
+        stale = false
         SleepTimer.clear()
-        pauseAllPlayersAndStopSelf()
+        player.pause()
+        player.stop()
+        player.clearMediaItems()   // plus rien à jouer : la notification disparaît
+        stopForeground(STOP_FOREGROUND_REMOVE)
+        stopSelf()
     }
 
     override fun onDestroy() {
+        if (instance === this) instance = null
         SleepTimer.onExpire = null
         handler.removeCallbacksAndMessages(null)
         session?.release()
@@ -247,6 +259,10 @@ class PlaybackService : MediaSessionService() {
     }
 
     companion object {
+        /** Le service en cours, s'il existe : permet à l'écran de demander l'arrêt complet. */
+        var instance: PlaybackService? = null
+            private set
+
         const val ACTION_ALARM = "io.github.cyrille31.radiop.ALARM"
         private const val RINGTONE_ID = "sonnerie"
         private const val MAX_RETRIES = 6
