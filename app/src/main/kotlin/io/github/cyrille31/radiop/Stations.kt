@@ -39,9 +39,19 @@ object Stations {
             )
             .build()
 
-    private val siteSuffix = Regex("""\s*-?\s*www\.radiopresence\.com\s*$""", RegexOption.IGNORE_CASE)
+    private val suffix = Regex("""(^|\s*-\s*)(www\.radiopresence\.com|radio\s*pr[eé]sence)\s*$""", RegexOption.IGNORE_CASE)
 
-    /** Le flux annonce « Titre - www.radiopresence.com » (ou seulement le suffixe) : on ne garde que le titre. */
-    fun cleanTitle(raw: String?): String? =
-        raw?.replace(siteSuffix, "")?.trim()?.trim('-')?.trim()?.takeIf { it.isNotEmpty() }
+    /**
+     * Le flux annonce par exemple « Titre - Radio Présence » ou « Titre - www.radiopresence.com »,
+     * parfois seulement le suffixe : on ne garde que le titre.
+     */
+    fun cleanTitle(raw: String?): String? {
+        var title = raw?.trim() ?: return null
+        while (true) {
+            val shorter = title.replace(suffix, "").trim()
+            if (shorter == title) break
+            title = shorter
+        }
+        return title.trim('-').trim().takeIf { it.isNotEmpty() }
+    }
 }

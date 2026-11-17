@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 120" role="img" aria-label="radioP">
+  <g transform="rotate(-3 150 60)">
+    <rect x="8" y="14" width="284" height="92" rx="28" fill="#0b8fd9" stroke="#0567ab" stroke-width="6"/>
+    <text x="30" y="80" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="44" font-style="italic" font-weight="500" fill="#bfe6ff">radio</text>
+    <rect x="160" y="30" width="13" height="62" rx="6.5" fill="#fff"/>
+    <circle cx="185" cy="53" r="16" fill="none" stroke="#fff" stroke-width="13"/>
+    <g fill="none" stroke="#ff8a65" stroke-width="5.5" stroke-linecap="round">
+      <path d="M211.8 37.5A31 31 0 0 1 211.8 68.5"/>
+      <path d="M222.2 31.5A43 43 0 0 1 222.2 74.5" opacity=".8"/>
+      <path d="M232.6 25.5A55 55 0 0 1 232.6 80.5" opacity=".55"/>
+    </g>
+  </g>
+</svg>

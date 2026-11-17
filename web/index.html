@@ -1,0 +1,141 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>radioP</title>
+  <meta name="description" content="Le direct de Radio Présence, sur toutes ses antennes.">
+  <meta name="theme-color" content="#003a63">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="radioP">
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="icon" href="img/icon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="img/apple-touch-icon.png">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<!-- Icônes : tracés Material Icons (Google, licence Apache 2.0). -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="i-menu" viewBox="0 0 24 24"><path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/></symbol>
+  <symbol id="i-play" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></symbol>
+  <symbol id="i-pause" viewBox="0 0 24 24"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></symbol>
+  <symbol id="i-mail" viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4-8 5-8-5V6l8 5 8-5v2z"/></symbol>
+  <symbol id="i-close" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></symbol>
+  <symbol id="i-info" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"/></symbol>
+  <symbol id="i-heart" viewBox="0 0 24 24"><path d="m12 21.35-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></symbol>
+  <symbol id="i-volume" viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></symbol>
+  <symbol id="i-feed" viewBox="0 0 24 24"><circle cx="6.18" cy="17.82" r="2.18"/><path d="M4 4.44v2.83c7.03 0 12.73 5.7 12.73 12.73h2.83c0-8.59-6.97-15.56-15.56-15.56zm0 5.66v2.83c3.9 0 7.07 3.17 7.07 7.07h2.83c0-5.47-4.43-9.9-9.9-9.9z"/></symbol>
+  <symbol id="i-globe" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/></symbol>
+  <symbol id="i-radio" viewBox="0 0 24 24"><path d="M3.24 6.15C2.51 6.43 2 7.17 2 8v12c0 1.1.89 2 2 2h16c1.11 0 2-.9 2-2V8c0-1.11-.89-2-2-2H8.3l8.26-3.34L15.88 1 3.24 6.15zM7 20c-1.66 0-3-1.34-3-3s1.34-3 3-3 3 1.34 3 3-1.34 3-3 3zm13-8h-2v-2h-2v2H4V8h16v4z"/></symbol>
+  <symbol id="i-moon" viewBox="0 0 24 24"><path d="M9 2c-1.05 0-2.05.16-3 .46 4.06 1.27 7 5.06 7 9.54 0 4.48-2.94 8.27-7 9.54.95.3 1.95.46 3 .46 5.52 0 10-4.48 10-10S14.52 2 9 2z"/></symbol>
+  <symbol id="i-back" viewBox="0 0 24 24"><path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z"/></symbol>
+</svg>
+
+<div class="app">
+  <!-- Ma Radio -->
+  <section class="view view-radio" id="viewRadio">
+    <header class="bar">
+      <button class="icon-btn" data-open="drawer" aria-label="Menu"><svg><use href="#i-menu"/></svg></button>
+      <img class="bar-logo" src="img/logo.svg" alt="radioP">
+      <button class="icon-btn" data-open="stations" aria-label="Choisir l'antenne"><svg><use href="#i-radio"/></svg></button>
+    </header>
+
+    <div class="cover-area">
+      <div class="cover">
+        <img src="img/sky.svg" alt="">
+        <button class="play" id="btnPlay" aria-label="Lecture">
+          <svg class="play-icon"><use id="playIcon" href="#i-play"/></svg>
+          <span class="spinner" aria-hidden="true"></span>
+        </button>
+      </div>
+    </div>
+
+    <div class="band" aria-live="polite">
+      <p class="band-station" id="stationName"></p>
+      <p class="band-title" id="nowTitle">&nbsp;</p>
+      <p class="band-error" id="playError" hidden>Le direct est injoignable. Vérifiez la connexion, puis réessayez.</p>
+    </div>
+
+    <footer class="radio-foot">
+      <button class="icon-btn mail" data-open="contact" aria-label="Contacter la radio"><svg><use href="#i-mail"/></svg></button>
+      <button class="moon" data-open="timer" aria-label="Minuteur de veille">
+        <svg><use href="#i-moon"/></svg>
+        <span id="timerBadge" hidden></span>
+      </button>
+    </footer>
+  </section>
+
+  <!-- Informations -->
+  <section class="view view-infos" id="viewInfos" hidden>
+    <header class="bar">
+      <button class="icon-btn" data-back aria-label="Retour"><svg><use href="#i-back"/></svg></button>
+      <h1 class="bar-title">Informations</h1>
+      <span class="icon-btn" aria-hidden="true"></span>
+    </header>
+    <div class="infos">
+      <img class="infos-logo" src="img/logo.svg" alt="radioP">
+      <div class="card">
+        <h2>À propos</h2>
+        <p>radioP est une application personnelle et indépendante pour écouter le direct de Radio Présence : choix de l'antenne, titre de l'émission en cours, minuteur de veille. Elle n'est ni éditée ni soutenue par la radio.</p>
+        <p>Les flux audio, les émissions et les pages du site appartiennent à Radio Présence. L'application ne demande aucun accès à vos photos ni à votre position, et ne collecte aucune donnée.</p>
+        <p><a href="https://www.radiopresence.com/article/mentions-legales" target="_blank" rel="noopener">Mentions légales de la radio</a></p>
+        <h2>Installer l'application</h2>
+        <p><strong>iPhone, iPad :</strong> dans Safari, bouton Partager, puis « Sur l'écran d'accueil ».</p>
+        <p><strong>Android, ordinateur :</strong> menu du navigateur, puis « Installer l'application ».</p>
+        <p>Pour écouter sur une Apple TV ou une enceinte, utilisez AirPlay depuis les commandes de lecture de l'iPhone.</p>
+        <h2>Licence</h2>
+        <p>Le code de l'application est distribué sous licence MIT + « BAL 1.0 — Bonne Action License ».</p>
+        <p>En échange, une seule chose vous est demandée, sur l'honneur : faire une bonne action chaque jour. Aider un voisin, sourire à un inconnu, ramasser un papier… c'est vous qui voyez.</p>
+        <p>Icônes : Material Icons (Google, licence Apache 2.0).</p>
+      </div>
+    </div>
+  </section>
+</div>
+
+<div class="scrim" id="scrim" hidden></div>
+
+<!-- Menu de gauche -->
+<nav class="drawer drawer-left" id="drawer" aria-label="Menu" hidden>
+  <img class="drawer-logo" src="img/logo.svg" alt="radioP">
+  <button data-go="radio"><svg class="big"><use href="#i-volume"/></svg>Ma Radio</button>
+  <a href="https://www.radiopresence.com/" target="_blank" rel="noopener"><svg><use href="#i-feed"/></svg>A la une</a>
+  <a href="https://www.radiopresence.com/emissions/information/regionale/eglise-actualite/" target="_blank" rel="noopener"><svg><use href="#i-feed"/></svg>Eglise actu</a>
+  <a href="https://www.radiopresence.com/" target="_blank" rel="noopener"><svg><use href="#i-globe"/></svg>Site internet</a>
+  <button data-go="infos"><svg><use href="#i-info"/></svg>Informations</button>
+  <a href="https://www.radiopresence.com/soutenir-radio-presence-en-devenant-donateur/" target="_blank" rel="noopener"><svg><use href="#i-heart"/></svg>Faire un don</a>
+</nav>
+
+<!-- Antennes, à droite -->
+<div class="drawer drawer-right" id="stations" role="dialog" aria-label="Choisir l'antenne" hidden>
+  <ul class="stations" id="stationList"></ul>
+</div>
+
+<!-- Contacter par… -->
+<div class="dialog" id="contact" role="dialog" aria-label="Contacter par" hidden>
+  <p class="dialog-title">Contacter par…</p>
+  <a href="tel:0562486300">Téléphone</a>
+  <a href="mailto:contact@radiopresence.com">Email</a>
+</div>
+
+<!-- Minuteur de veille -->
+<div class="sheet" id="timer" role="dialog" aria-label="Minuteur de veille" hidden>
+  <button class="sheet-close" data-close aria-label="Fermer"><svg><use href="#i-close"/></svg></button>
+  <h2>Minuteur de veille</h2>
+  <p class="sheet-sub" id="timerSub">Arrêter la radio après</p>
+  <div class="sheet-opts">
+    <button data-minutes="5">5 minutes</button>
+    <button data-minutes="10">10 minutes</button>
+    <button data-minutes="15">15 minutes</button>
+    <button data-minutes="30">30 minutes</button>
+    <button data-minutes="45">45 minutes</button>
+    <button data-minutes="60">1 heure</button>
+    <button data-minutes="120">2 heures</button>
+  </div>
+  <button class="danger" id="btnTimerClear" disabled>Supprimer le minuteur</button>
+</div>
+
+<script src="app.js"></script>
+</body>
+</html>
