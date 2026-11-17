@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Petite icône de la notification de lecture (remplace celle fournie par Media3). -->
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="24dp" android:height="24dp"
+    android:viewportWidth="24" android:viewportHeight="24">
+    <path android:strokeColor="#FFFFFF" android:strokeWidth="2.6" android:strokeLineCap="round"
+        android:pathData="M6.3,4.5V19.5" />
+    <path android:strokeColor="#FFFFFF" android:strokeWidth="2.6"
+        android:pathData="M10.5,8.5m-4,0a4,4 0 1,0 8,0a4,4 0 1,0 -8,0" />
+    <path android:strokeColor="#FFFFFF" android:strokeWidth="1.8" android:strokeLineCap="round"
+        android:pathData="M17.3,4.6A7.8,7.8 0 0,1 17.3,12.4" />
+    <path android:strokeColor="#FFFFFF" android:strokeWidth="1.8" android:strokeLineCap="round"
+        android:pathData="M20.2,2.6A11.3,11.3 0 0,1 20.2,14.4" />
+</vector>

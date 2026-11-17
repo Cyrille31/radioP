@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Le serveur de flux répond en HTTPS, mais peut rediriger vers le HTTP :
+     le trafic en clair est autorisé pour ces deux hôtes seulement. -->
+<network-security-config>
+    <base-config cleartextTrafficPermitted="false" />
+    <domain-config cleartextTrafficPermitted="true">
+        <domain includeSubdomains="false">direct.radiopresence.com</domain>
+        <domain includeSubdomains="false">live.radiopresence.com</domain>
+    </domain-config>
+</network-security-config>
